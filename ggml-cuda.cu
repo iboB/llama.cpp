@@ -599,8 +599,9 @@ static ggml_backend_buffer_type_i ggml_backend_cuda_buffer_type_interface = {
 };
 
 GGML_CALL ggml_backend_buffer_type_t ggml_backend_cuda_buffer_type(int device) {
-    static std::mutex mutex;
-    std::lock_guard<std::mutex> lock(mutex);
+    // https://developercommunity.visualstudio.com/t/Visual-Studio-17100-Update-leads-to-Pr/10669759?sort=active&topics=windows+10.0.18875
+    //static std::mutex mutex;
+    //std::lock_guard<std::mutex> lock(mutex);
 
     if (device >= ggml_backend_cuda_get_device_count()) {
         return nullptr;
